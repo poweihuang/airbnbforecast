@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1487692503973.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "582FD8E7",
+    "lastKnownWriteTime" : 4330148096,
+    "last_content_update" : 1487692503973,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "AA6899C1",
+        "caption" : "y_diff",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=y_diff&cache_key=AA6899C1",
+        "displayedObservations" : 366,
+        "environment" : "",
+        "object" : "y_diff",
+        "preview" : 0,
+        "totalObservations" : 366,
+        "variables" : 2
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

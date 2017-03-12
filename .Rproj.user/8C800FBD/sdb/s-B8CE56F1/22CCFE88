@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#special cbind function\n#my.cbind(x,y,first)\n# FALSE means add NA to top of shorter vector\n# TRUE means add NA to bottom of shorter vector\npadNA <- function (mydata, rowsneeded, first = TRUE) \n{\n  temp1 = colnames(mydata)\n  rowsneeded = rowsneeded - nrow(mydata)\n  temp2 = setNames(\n    data.frame(matrix(rep(NA, length(temp1) * rowsneeded), \n                      ncol = length(temp1))), temp1)\n  if (isTRUE(first)) rbind(mydata, temp2)\n  else rbind(temp2, mydata)\n}\n\ndotnames <- function(...) {\n  vnames <- as.list(substitute(list(...)))[-1L]\n  vnames <- unlist(lapply(vnames,deparse), FALSE, FALSE)\n  vnames\n}\n\nCbind <- function(..., first = TRUE) {\n  Names <- dotnames(...)\n  datalist <- setNames(list(...), Names)\n  nrows <- max(sapply(datalist, function(x) \n    ifelse(is.null(dim(x)), length(x), nrow(x))))\n  datalist <- lapply(seq_along(datalist), function(x) {\n    z <- datalist[[x]]\n    if (is.null(dim(z))) {\n      z <- setNames(data.frame(z), Names[x])\n    } else {\n      if (is.null(colnames(z))) {\n        colnames(z) <- paste(Names[x], sequence(ncol(z)), sep = \"_\")\n      } else {\n        colnames(z) <- paste(Names[x], colnames(z), sep = \"_\")\n      }\n    }\n    padNA(z, rowsneeded = nrows, first = first)\n  })\n  do.call(cbind, datalist)\n}",
+    "created" : 1489123032258.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3239405906",
+    "id" : "22CCFE88",
+    "lastKnownWriteTime" : 1489324023,
+    "last_content_update" : 1489324023587,
+    "path" : "~/R/Airbnb/Cbind.R",
+    "project_path" : "Cbind.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
